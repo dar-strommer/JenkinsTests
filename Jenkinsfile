@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            label "main-${podLabel}"
+            yamlFile 'base-agent.yaml'
+            //nodeSelector "kubernetes.io/track=knomi"
+        }
+    }
 
     stages {
          stage('Compile') {
