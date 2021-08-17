@@ -28,10 +28,15 @@ pipeline {
 
             }
         }
-       stage('Test') {
+       stage('Unit Test') {
             steps {
-                echo "Not implemented Test..."
-            }
+                    echo "Running command: \"sbt test\""
+                    sh label: 'Integration Test', script: 'sbt test'              }
+        }
+        stage('Integration Test') {
+            steps {
+                    echo "Running command: \"sbt it:test\""
+                    sh label: 'Integration Test', script: 'sbt it:test'            }
         }
        stage('Stryker') {
             steps {
