@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            label "main-${podLabel}"
+            label "main-es-dispatcher"
             yamlFile 'base-agent.yaml'
             //nodeSelector "kubernetes.io/track=knomi"
         }
