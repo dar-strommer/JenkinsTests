@@ -21,8 +21,10 @@ pipeline {
         }
        stage('Build') {
             steps {
-                echo "Running command: \"sbt \'all clean compile test:compile it:compile\'\""
-                sh label: 'Compiling', script: 'sbt \'all clean compile test:compile it:compile\''
+                container("builder"){
+                    echo "Running command: \"sbt \'all clean compile test:compile it:compile\'\""
+                    sh label: 'Compiling', script: 'sbt \'all clean compile test:compile it:compile\''
+                }
 
             }
         }
