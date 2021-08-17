@@ -34,6 +34,7 @@ pipeline {
                     echo "Running command: \"sbt test\""
                     sh label: 'Integration Test', script: 'sbt test'
                 }
+            }
         }
         stage('Integration Test') {
             steps {
@@ -41,6 +42,7 @@ pipeline {
                     echo "Running command: \"sbt it:test\""
                     sh label: 'Integration Test', script: 'sbt it:test'
                 }
+            }
         }
        stage('Stryker') {
             steps {
