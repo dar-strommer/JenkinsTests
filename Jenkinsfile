@@ -30,13 +30,17 @@ pipeline {
         }
        stage('Unit Test') {
             steps {
+                container("sbt") {
                     echo "Running command: \"sbt test\""
-                    sh label: 'Integration Test', script: 'sbt test'              }
+                    sh label: 'Integration Test', script: 'sbt test'
+                }
         }
         stage('Integration Test') {
             steps {
+                container("sbt") {
                     echo "Running command: \"sbt it:test\""
-                    sh label: 'Integration Test', script: 'sbt it:test'            }
+                    sh label: 'Integration Test', script: 'sbt it:test'
+                }
         }
        stage('Stryker') {
             steps {
